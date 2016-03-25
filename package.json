@@ -1,0 +1,25 @@
+{
+  "name": "git-branching-wiki",
+  "version": "0.5.0",
+  "description": "A wiki system that generates a static wiki site based on git branches, for easy documentation of various branches of your codebase, allowing your documentation to follow the same branching model that your codebase does.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silvermine/git-branching-wiki.git"
+  },
+  "keywords": [
+    "git",
+    "wiki",
+    "branches",
+    "documentation"
+  ],
+  "author": "Jeremy Thomerson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/silvermine/git-branching-wiki/issues"
+  },
+  "homepage": "https://github.com/silvermine/git-branching-wiki#readme"
+}
