@@ -33,6 +33,7 @@ module.exports = {
          timedLocalPlugin(grunt, opts, 'CopyAssets'),
          timedLocalPlugin(grunt, opts, 'RejectAssets'),
          timedLocalPlugin(grunt, opts, 'FileSourceMetadata'),
+         timedLocalPlugin(grunt, opts, 'Slug'),
          // timedLocalPlugin(grunt, opts, 'Debug'),
       ];
    },
