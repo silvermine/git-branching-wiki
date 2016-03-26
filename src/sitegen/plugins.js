@@ -36,6 +36,8 @@ module.exports = {
          timedLocalPlugin(grunt, opts, 'SetGlobalBranchList'),
          timedLocalPlugin(grunt, opts, 'Slug'),
          timedLocalPlugin(grunt, opts, 'SetFileURL'),
+         timedLocalPlugin(grunt, opts, 'Markdown'),
+         timedLocalPlugin(grunt, opts, 'Templating'),
          // timedLocalPlugin(grunt, opts, 'Debug'),
       ];
    },
