@@ -21,6 +21,9 @@ DEFAULT_OPTS = {
       base: 'dist',
       raw: 'raw',
       site: 'site',
+      workspaceDir: 'workspace',
+      localBranchesDir: 'local-branches',
+      remoteBranchesDir: 'remote-branches',
    },
 };
 
