@@ -31,6 +31,10 @@ module.exports = BasePlugin.extend({
          isTag: false,
          isLocal: false,
          isRemote: false,
+         paths: {
+            full: filePath,
+            typeDir: refType,
+         },
       };
 
       if (refType == this.opts.output.workspaceDir) {
@@ -38,12 +42,18 @@ module.exports = BasePlugin.extend({
       } else if (refType == this.opts.output.remoteBranchesDir) {
          info.isBranch = true;
          info.isRemote = true;
+         info.paths.remoteName = parts.shift();
+         info.paths.branchName = parts.shift();
       } else if (refType == this.opts.output.localBranchesDir) {
          info.isBranch = true;
          info.isLocal = true;
+         info.paths.branchName = parts.shift();
       } else if (refType == this.opts.output.tagsDir) {
          info.isTag = true;
+         info.paths.tagName = parts.shift();
       }
+
+      info.paths.docBaseRelative = parts.join(path.sep);
 
       return info;
    },
