@@ -51,13 +51,9 @@ module.exports = function(grunt) {
             .then(function() {
                return Q(step.run());
             });
-      }, Q(true))
+      }, Q(true));
 
-      promise
-         .then(done)
-         .catch(function(e) {
-            done(e);
-         });
+      promise.then(done).catch(done);
    });
 
 };

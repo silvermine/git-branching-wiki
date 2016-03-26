@@ -31,7 +31,7 @@ module.exports = BaseStep.extend({
    },
 
    getWatchDirectory: function() {
-      return path.resolve(this.opts.input.git);
+      return path.join(this.getRepoDirectory(), this.opts.input.git);
    },
 
    onRepoInitialized: _.noop,
