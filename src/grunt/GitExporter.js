@@ -23,7 +23,7 @@ module.exports = BaseGitStep.extend({
          .then(function(refs) {
             return _.reduce(refs, function(prev, ref) {
                // TODO: this will need to filter down to just those things that are actually branches:
-               return prev.then(self.exportBranch.bind(self, ref));
+               return prev.then(self.exportRef.bind(self, ref));
             }, Q());
          });
    },
@@ -41,12 +41,25 @@ module.exports = BaseGitStep.extend({
          }.bind(this));
    },
 
-   exportBranch: function(ref) {
-      var destDir = path.join(this.getOutputRawDirectory(), this.getRelativePathForRef(ref));
+   exportRef: function(ref) {
+      var destDir = path.join(this.getOutputRawDirectory(), this.getRelativePathForRef(ref)),
+          head;
 
-      this.grunt.log.debug('exporting branch "%s" to "%s"', ref.name(), destDir);
+      if (ref.isTag()) {
+         // TODO: possibly implement the exporting of tags, which wasn't immediately
+         // working and is not as high on my priority list as other things
+         return;
+      }
 
-      return mkdir(destDir)
+      this.grunt.log.debug('exporting %s "%s" to "%s"', (ref.isTag() ? 'tag' : 'branch'), ref.name(), destDir);
+
+      return this.repo.getHeadCommit()
+         .then(function(headCommit) {
+            this.grunt.log.debug('head commit is currently "%s"', headCommit.id());
+            head = headCommit;
+
+            return mkdir(destDir);
+         }.bind(this))
          .then(function() {
             // TODO: not sure why I'm having to lookup the commit since the checkout should take
             // the reference by itself, but without this lookup I was getting an error that said:
@@ -61,13 +74,31 @@ module.exports = BaseGitStep.extend({
             };
 
             return git.Checkout.tree(this.repo, commit, opts);
+         }.bind(this))
+         .then(function(commit) {
+            this.grunt.log.debug('resetting to head commit "%s"', head.id());
+            return git.Reset.reset(this.repo, head, git.Reset.TYPE.MIXED);
          }.bind(this));
    },
 
    getRelativePathForRef: function(ref) {
-      var branchTypeDir = (ref.isRemote() ? this.opts.output.remoteBranchesDir : this.opts.output.localBranchesDir);
+      var base;
 
-      return path.join(branchTypeDir, ref.shorthand());
+      if (ref.isTag()) {
+         base = this.opts.output.tagsDir;
+      } else if (ref.isRemote()) {
+         base = this.opts.output.remoteBranchesDir;
+      } else if (ref.isBranch()) {
+         base = this.opts.output.localBranchesDir;
+      } else {
+         this.grunt.fail.warn(
+            'unknown ref "' + ref.name() +
+            '" short: ' + ref.shorthand() +
+            ', target: ' + ref.target().tostrS()
+         );
+      }
+
+      return path.join(base, ref.shorthand());
    },
 
 });

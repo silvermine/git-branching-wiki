@@ -23,6 +23,7 @@ DEFAULT_OPTS = {
       site: 'site',
       workspaceDir: 'workspace',
       localBranchesDir: 'local-branches',
+      tagsDir: 'tags',
       remoteBranchesDir: 'remote-branches',
    },
 };
