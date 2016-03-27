@@ -30,12 +30,15 @@ module.exports = BaseStep.extend({
       return Q.ninvoke(builder, 'build')
          .then(function() {
             // TODO: make this configurable (users can override static assets)
-            var src = path.join(__dirname, '../static/*'),
+            var srcs = [ path.join(__dirname, '../thirdparty'), path.join(__dirname, '../static') ],
                 dest = this.getOutputSiteDirectory();
 
-            return Q.all(_.map(this.grunt.file.expand(src), function(oneSrc) {
-               return copy(oneSrc, path.join(dest, path.basename(oneSrc)), { overwrite: true });
-            }));
+            // do the copying in serial (_.reduce rather than Q.all(_.map)) in case something in our local static folder
+            // overwrites something in the thirdparty folder - that shouldn't happen, but at least we'll have
+            // deterministic behavior
+            return _.reduce(srcs, function(prev, src) {
+               return prev.then(copy.bind(undefined, src, dest, { overwrite: true }));
+            }, Q());
          }.bind(this))
          .then(function() {
             this.grunt.log.ok('site build completed in %s seconds', ((_.now() - start) / 1000));
