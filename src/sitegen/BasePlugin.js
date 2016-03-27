@@ -36,8 +36,10 @@ module.exports = Class.extend({
     * @return a metalsmith files object, filtered according to input
     */
    filterFilesByExtension: function(files, extensions, options) {
-      // allow for a single extension or an array of extensions
+      // allow for a single extension or an array of extensions:
       extensions = _.isArray(extensions) ? extensions : [ extensions ];
+      // allow for undefined options:
+      options = options || {};
 
       return _.reduce(files, function(memo, file, name) {
          var isInList = _.contains(extensions, path.extname(name).substr(1)),

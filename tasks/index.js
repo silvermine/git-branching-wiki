@@ -66,3 +66,5 @@ module.exports = function(grunt) {
    });
 
 };
+
+module.exports.DEFAULT_OPTS = DEFAULT_OPTS;
