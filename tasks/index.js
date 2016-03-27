@@ -26,6 +26,11 @@ DEFAULT_OPTS = {
       tagsDir: 'tags',
       remoteBranchesDir: 'remote-branches',
    },
+   templating: {
+      globals: {
+         site_title: 'Documentation Site'
+      },
+   },
 };
 
 STEPS = {

@@ -1,0 +1,83 @@
+{% macro attachmentList(files) %}
+   {% if files and files.length %}
+      <div class="panel panel-default downloads">
+         <div class="panel-body">
+            <h4>Attached Files</h4>
+            <ul>
+               {% for file in files %}
+                  <li>
+                     <span class="glyphicon glyphicon-download-alt"></span>
+                     <a href="{{ util.path(file) }}" target="_blank">{{ file }}</a>
+                  </li>
+               {% endfor %}
+            </ul>
+         </div>
+      </div>
+   {% endif %}
+{% endmacro %}
+
+
+{% macro tableOfContents(headings) %}
+   {% if headings and headings.length %}
+      <div class="panel panel-default toc">
+         <div class="panel-body">
+            <h4>Table of Contents</h4>
+            {{ tableOfContentsInner(headings) }}
+         </div>
+      </div>
+   {% endif %}
+{% endmacro %}
+
+
+{% macro tableOfContentsInner(headings) %}
+   <ul>
+      {% for heading in headings %}
+         <li>
+            <a href="#{{ heading.id }}">{{ heading.text }}</a>
+            {% if heading.subheadings and heading.subheadings.length %}
+               {{ tableOfContentsInner(heading.subheadings) }}
+            {% endif %}
+         </li>
+      {% endfor %}
+   </ul>
+{% endmacro %}
+
+
+{% macro breadcrumbs(parents, title) %}
+   {% if parents and parents.length %}
+      <ol class="breadcrumb">
+         {% for parent in parents %}
+            <li><a href="{{ util.path(parent.url) }}">{{ parent.title }}</a></li>
+         {% endfor %}
+         <li class="active">{{ title }}</li>
+      </ol>
+   {% endif %}
+{% endmacro %}
+
+
+{% macro childPages(children, levels=1) %}
+   {% if children and children.length %}
+      <div class="panel panel-default child-pages">
+         <div class="panel-body">
+            <h4>Child Pages</h4>
+            <ul>
+               {{ childPagesInner(children, 1, levels) }}
+            </ul>
+         </div>
+      </div>
+   {% endif %}
+{% endmacro %}
+
+
+{% macro childPagesInner(children, level, levels) %}
+   {% for child in children %}
+      <li>
+         <a href="{{ util.path(child.url) }}">{{ child.title }}</a>
+         {% if level < levels and child.children and child.children.length > 0 %}
+            <ul>
+               {{ childPagesInner(child.children, level + 1, levels) }}
+            </ul>
+         {% endif %}
+      </li>
+   {% endfor %}
+{% endmacro %}

@@ -15,30 +15,42 @@ var _ = require('underscore'),
 module.exports = BasePlugin.extend({
 
    run: function(files, metalsmith, done) {
+      // TODO: make it so that users can override the templates with their own
       var loader = new nunjucks.FileSystemLoader(TEMPLATE_BASE),
           environment = new nunjucks.Environment(loader);
 
       _.each(files, function(file, name) {
          var template = DEFAULT_TEMPLATE,
-             content, context;
+             rendered, context;
 
          if (file.template) {
             template = file.template + '.html';
          }
 
-         this.grunt.log.debug('Rendering template for "%s"', name);
-         context = _.extend(
-            {},
-            { metadata: metalsmith.metadata() },
-            file,
-            { contents: file.contents.toString() }
-         );
+         this.grunt.log.debug('Rendering template "%s" for "%s"', template, name);
 
-         content = environment.render(template, context);
-         file.contents = new Buffer(content);
+         context = {
+            globals: _.extend({}, metalsmith.metadata(), this.opts.templating.globals),
+            page: _.extend({}, file, { contents: file.contents.toString() }),
+         };
+
+         environment.addGlobal('util', this._createTemplateUtility(file));
+         rendered = environment.render(template, context);
+         file.contents = new Buffer(rendered);
       }.bind(this));
 
       done();
+   },
+
+   _createTemplateUtility: function(file) {
+      return {
+         path: function(toURL) {
+            var from = path.dirname(file.url).replace(/^\//, ''),
+                to = toURL.replace(/^\//, '');
+
+            return path.relative(from, to);
+         },
+      };
    },
 
 });

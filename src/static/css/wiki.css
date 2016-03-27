@@ -1,0 +1,25 @@
+.toc ul {
+   padding-left: 1.5em;
+}
+
+.downloads ul {
+   padding-left: 0;
+}
+
+.downloads ul li {
+   list-style: none;
+   margin-bottom: 0.5em;
+}
+
+ol.breadcrumbs {
+   margin-bottom: 3em;
+}
+
+ol.breadcrumbs:last-child {
+   margin-top: 3em;
+   margin-bottom: 3em;
+}
+
+a.dead {
+   color: #cc0000;
+}

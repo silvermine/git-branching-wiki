@@ -1,11 +1,20 @@
 <html>
    <head>
-      <title>{{ title }}</title>
+      <title>{{ page.title }}</title>
+
+      <link href="{{ util.path('/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+      <link href="{{ util.path('/css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css" />
+      <link href="{{ util.path('/css/wiki.css') }}" rel="stylesheet" type="text/css" />
    </head>
    <body>
+      {% include "navbar.html" %}
+
       <div class="container">
          {% block main %}
          {% endblock %}
       </div>
+
+      <script type="text/javascript" src="{{ util.path('/js/jquery.min.js') }}"></script>
+      <script type="text/javascript" src="{{ util.path('/js/bootstrap.min.js') }}"></script>
    </body>
 </html>

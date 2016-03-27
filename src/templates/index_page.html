@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block main %}
+   {% from "macros.html" import childPages, breadcrumbs %}
+
+   <div class="row">
+      <div class="col-md-12">
+         {{ breadcrumbs(page.parents, title) }}
+         {{ page.contents }}
+         {{ childPages(page.children, levels=10) }}
+      </div>
+   </div>
+{% endblock %}
