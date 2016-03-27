@@ -38,6 +38,7 @@ module.exports = {
          timedLocalPlugin(grunt, opts, 'SetFileURL'),
          timedLocalPlugin(grunt, opts, 'Markdown'),
          timedLocalPlugin(grunt, opts, 'TitleFallbacks'), // from frontmatter, then fallback to h1, then slug (relies on markdown)
+         timedLocalPlugin(grunt, opts, 'HeadingsMap'), // for per-page TOC, create a headings map
          timedLocalPlugin(grunt, opts, 'ParentsList'),
          timedLocalPlugin(grunt, opts, 'ChildrenList'), // relies on titles for sorting children
          timedLocalPlugin(grunt, opts, 'Templating'),
