@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "stable"
+  - "5"
+  - "5.1"
+  - "4"
+  - "4.2"
+  - "4.1"
+  - "4.0"
+
+# Not compatible with older versions because some dependencies
+# use yield/unyield, etc
+
+# This needed for nodegit:
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libstdc++-4.9-dev
