@@ -30,6 +30,19 @@ DEFAULT_OPTS = {
       globals: {
          site_title: 'Documentation Site'
       },
+      markdown: {
+         ticketLinks: 'https://github.com/silvermine/git-branching-wiki/issues/<%= number %>',
+         commitLinks: {
+            hashOnly: 'https://github.com/silvermine/git-branching-wiki/commit/<%= hash %>',
+            crossRepo: 'https://github.com/<%= group %>/<%= repo %>/commit/<%= hash %>',
+         },
+         codeLinks: {
+            defaultRevision: 'master',
+            defaultGroup: 'silvermine',
+            defaultRepo: 'git-branching-wiki',
+            url: 'https://github.com/<%= group %>/<%= repo %>/blob/<%= revision %>/<%= filepath %><% if (startingLine) { %>#L<%= startingLine %><% if (endingLine) { %>-L<%= endingLine %><% } } %>',
+         }
+      },
    },
 };
 
