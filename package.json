@@ -4,7 +4,7 @@
   "description": "A wiki system that generates a static wiki site based on git branches, for easy documentation of various branches of your codebase, allowing your documentation to follow the same branching model that your codebase does.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha src/tests/**/*Test.js"
+    "test": "./node_modules/.bin/mocha 'src/tests/**/*Test.js'"
   },
   "repository": {
     "type": "git",

@@ -14,9 +14,11 @@ module.exports = Class.extend({
    init: function(grunt, opts) {
       this.grunt = grunt;
       this.opts = opts;
+      this.onInitialized();
    },
 
    run: _.noop,
+   onInitialized: _.noop,
 
    /**
     * Filters a metalsmith files object down to only those files that have a certain extension.
