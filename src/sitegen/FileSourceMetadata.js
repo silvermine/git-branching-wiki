@@ -7,7 +7,17 @@
 
 var _ = require('underscore'),
     path = require('path'),
-    BasePlugin = require('./BasePlugin');
+    BasePlugin = require('./BasePlugin'),
+    DEFAULT_PARSED_INFO;
+
+DEFAULT_PARSED_INFO = {
+   isWorkspace: false,
+   isBranch: false,
+   isTag: false,
+   isLocal: false,
+   isRemote: false,
+};
+
 
 module.exports = BasePlugin.extend({
 
@@ -23,18 +33,11 @@ module.exports = BasePlugin.extend({
    parseInfoFromPath: function(filePath) {
       var parts = filePath.split(path.sep),
           refType = parts.shift(),
-          info;
+          info = this.defaultParsedInfo();
 
-      info = {
-         isWorkspace: false,
-         isBranch: false,
-         isTag: false,
-         isLocal: false,
-         isRemote: false,
-         paths: {
-            full: filePath,
-            typeDir: refType,
-         },
+      info.paths = {
+         full: filePath,
+         typeDir: refType,
       };
 
       if (refType == this.opts.output.workspaceDir) {
@@ -59,6 +62,10 @@ module.exports = BasePlugin.extend({
       info.paths.docBaseRelative = parts.join(path.sep);
 
       return info;
+   },
+
+   defaultParsedInfo: function() {
+      return _.extend({}, DEFAULT_PARSED_INFO);
    },
 
 });
