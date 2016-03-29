@@ -4,7 +4,7 @@
   "description": "A wiki system that generates a static wiki site based on git branches, for easy documentation of various branches of your codebase, allowing your documentation to follow the same branching model that your codebase does.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha 'src/tests/**/*Test.js'"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec 'src/tests/**/*Test.js'"
   },
   "repository": {
     "type": "git",
@@ -36,8 +36,11 @@
     "underscore": "1.8.3"
   },
   "devDependencies": {
+    "coveralls": "2.11.9",
     "expect.js": "0.3.1",
+    "istanbul": "0.4.2",
     "mocha": "2.4.5",
+    "mocha-lcov-reporter": "1.2.0",
     "yaml-front-matter": "3.4.0"
   }
 }
