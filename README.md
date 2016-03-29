@@ -1,12 +1,10 @@
 Git Branching Wiki
 =====================================================
 
-[![Build
-Status](https://travis-ci.org/silvermine/git-branching-wiki.png?branch=master)](https://travis-ci.org/silvermine/git-branching-wiki)
-[![Dependency
-Status](https://david-dm.org/silvermine/git-branching-wiki.png)](https://david-dm.org/silvermine/git-branching-wiki)
-[![Dev Dependency
-Status](https://david-dm.org/silvermine/git-branching-wiki/dev-status.png)](https://david-dm.org/silvermine/git-branching-wiki#info=devDependencies&view=table)
+[![Build Status](https://travis-ci.org/silvermine/git-branching-wiki.png?branch=master)](https://travis-ci.org/silvermine/git-branching-wiki)
+[![Coverage Status](https://coveralls.io/repos/github/silvermine/git-branching-wiki/badge.svg?branch=master)](https://coveralls.io/github/silvermine/git-branching-wiki?branch=master)
+[![Dependency Status](https://david-dm.org/silvermine/git-branching-wiki.png)](https://david-dm.org/silvermine/git-branching-wiki)
+[![Dev Dependency Status](https://david-dm.org/silvermine/git-branching-wiki/dev-status.png)](https://david-dm.org/silvermine/git-branching-wiki#info=devDependencies&view=table)
 
 
 What?
