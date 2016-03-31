@@ -35,7 +35,12 @@ module.exports = Class.extend({
    },
 
    run: function(plugin, files) {
-      plugin.run(files, this.mockMetalsmith(), _.noop);
+      var ms = this.mockMetalsmith();
+      plugin.run(files, ms, _.noop);
+
+      return {
+         metalsmith: ms,
+      }
    },
 
    readFixturePage: function(filename) {

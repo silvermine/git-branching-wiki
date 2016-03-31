@@ -24,7 +24,7 @@ module.exports = BasePlugin.extend({
 
       _.each(files, function(file) {
          if (file.children) {
-            _.sortBy(file.children, 'title');
+            file.children = _.sortBy(file.children, 'title');
          }
       });
 
