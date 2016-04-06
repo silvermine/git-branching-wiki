@@ -7,6 +7,7 @@
 
 var _ = require('underscore');
 
+/* istanbul ignore next */
 function timer(grunt, name, fn) {
    return function(files, metalsmith, done) {
       var start = _.now(),
@@ -19,6 +20,7 @@ function timer(grunt, name, fn) {
    };
 }
 
+/* istanbul ignore next */
 function timedLocalPlugin(grunt, opts, name) {
    var Plugin = require('./' + name),
        plugin = new Plugin(grunt, opts);
@@ -28,6 +30,7 @@ function timedLocalPlugin(grunt, opts, name) {
 
 module.exports = {
 
+   /* istanbul ignore next */
    list: function(grunt, opts) {
       return [
          timedLocalPlugin(grunt, opts, 'CopyAssets'),
