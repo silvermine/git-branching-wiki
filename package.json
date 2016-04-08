@@ -38,6 +38,7 @@
   "devDependencies": {
     "coveralls": "2.11.9",
     "expect.js": "0.3.1",
+    "grunt-contrib-jshint": "1.0.0",
     "istanbul": "0.4.2",
     "mocha": "2.4.5",
     "mocha-lcov-reporter": "1.2.0",
