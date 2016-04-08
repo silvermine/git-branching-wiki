@@ -32,7 +32,7 @@ module.exports = BasePlugin.extend({
          file.headings = _.reduce(headings, function(list, heading) {
             var parentWeight;
 
-            parentWeight  = _.findLastIndex(stack, function(h) {
+            parentWeight = _.findLastIndex(stack, function(h) {
                return h && h.weight < heading.weight;
             });
 
