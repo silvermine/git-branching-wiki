@@ -1,0 +1,24 @@
+{
+   "disallowArrowFunctions": true,
+   "disallowEmptyBlocks": true,
+   "disallowMultipleLineStrings": true,
+   "disallowMultiLineTernary": true,
+   "disallowMultipleSpaces": true,
+   "disallowNamedUnassignedFunctions": true,
+   "disallowNestedTernaries": true,
+   "disallowNewlineBeforeBlockStatements": true,
+   "disallowSpacesInAnonymousFunctionExpression": {
+      "beforeOpeningRoundBrace": true
+   },
+   "disallowSpacesInFunctionDeclaration": {
+      "beforeOpeningRoundBrace": true
+   },
+   "disallowSpacesInNamedFunctionExpression": {
+      "beforeOpeningRoundBrace": true
+   },
+   "disallowTrailingWhitespace": true,
+   "requireLineFeedAtFileEnd": true,
+   "requireSpacesInsideArrayBrackets": "all",
+   "validateIndentation": 3,
+   "validateQuoteMarks": "'"
+}

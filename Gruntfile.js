@@ -7,19 +7,34 @@
 
 module.exports = function(grunt) {
 
+   var config;
+
+   config = {
+      js: {
+         all: [ 'Gruntfile.js', 'src/**/*.js', 'tasks/**/*.js' ],
+      },
+   };
+
    grunt.initConfig({
+
       pkg: grunt.file.readJSON('package.json'),
+
       jshint: {
          options: {
             jshintrc: true,
          },
-         all: [ 'Gruntfile.js', 'src/**/*.js', 'tasks/**/*.js' ],
+         all: config.js.all,
+      },
+
+      jscs: {
+         src: config.js.all,
       },
    });
 
    grunt.loadNpmTasks('grunt-contrib-jshint');
+   grunt.loadNpmTasks('grunt-jscs');
 
-   grunt.registerTask('default', [ 'jshint' ]);
+   grunt.registerTask('default', [ 'jshint', 'jscs' ]);
 
 };
 
