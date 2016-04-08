@@ -40,21 +40,21 @@ module.exports = BasePlugin.extend({
          typeDir: refType,
       };
 
-      if (refType == this.opts.output.workspaceDir) {
+      if (refType === this.opts.output.workspaceDir) {
          info.isWorkspace = true;
          info.branchShorthand = refType;
-      } else if (refType == this.opts.output.remoteBranchesDir) {
+      } else if (refType === this.opts.output.remoteBranchesDir) {
          info.isBranch = true;
          info.isRemote = true;
          info.paths.remoteName = parts.shift();
          info.paths.branchName = parts.shift();
          info.branchShorthand = info.paths.remoteName + '/' + info.paths.branchName;
-      } else if (refType == this.opts.output.localBranchesDir) {
+      } else if (refType === this.opts.output.localBranchesDir) {
          info.isBranch = true;
          info.isLocal = true;
          info.paths.branchName = parts.shift();
          info.branchShorthand = info.paths.branchName;
-      } else if (refType == this.opts.output.tagsDir) {
+      } else if (refType === this.opts.output.tagsDir) {
          info.isTag = true;
          info.paths.tagName = parts.shift();
       }

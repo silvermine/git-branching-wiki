@@ -4,6 +4,7 @@
  */
 
 'use strict';
+/* globals describe, it */
 
 var _ = require('underscore'),
     expect = require('expect.js'),
@@ -11,7 +12,8 @@ var _ = require('underscore'),
     util = new Util(),
     PluginClass = require('../../sitegen/FileSourceMetadata'),
     plugin = util.createPlugin(PluginClass),
-    DEFAULT = plugin.defaultParsedInfo();
+    DEFAULT = plugin.defaultParsedInfo(),
+    createTestCases;
 
 describe('FileSourceMetadata sitegen plugin', function() {
 
@@ -53,7 +55,7 @@ describe('FileSourceMetadata sitegen plugin', function() {
    });
 });
 
-function createTestCases() {
+createTestCases = function() {
    var tests = {};
 
    tests['workspace/index.md'] = {
@@ -144,4 +146,4 @@ function createTestCases() {
    });
 
    return tests;
-}
+};

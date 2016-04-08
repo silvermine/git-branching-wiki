@@ -13,7 +13,7 @@ module.exports = BasePlugin.extend({
    run: function(files, metalsmith, done) {
       var branches;
 
-      branches = _.reduce(files, function(memo, file, name) {
+      branches = _.reduce(files, function(memo, file) {
          var branch = file.sourceInfo.branchShorthand;
          if (!memo[branch]) {
             memo[branch] = _.omit(file.sourceInfo, 'paths');

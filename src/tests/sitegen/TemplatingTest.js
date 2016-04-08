@@ -4,9 +4,9 @@
  */
 
 'use strict';
+/* globals describe, it */
 
-var _ = require('underscore'),
-    expect = require('expect.js'),
+var expect = require('expect.js'),
     Util = require('./MetalsmithPluginTestingUtility'),
     util = new Util(),
     PluginClass = require('../../sitegen/Templating'),

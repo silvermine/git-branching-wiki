@@ -62,8 +62,8 @@ module.exports = function(grunt) {
 
       grunt.log.writeln('%s running "%s" steps', BASE_TASK_NAME, steps);
 
-      promise = _.reduce(steps, function(prev, step) {
-         var Step = STEPS[step],
+      promise = _.reduce(steps, function(prev, stepName) {
+         var Step = STEPS[stepName],
              step = new Step(grunt, opts);
 
          return prev

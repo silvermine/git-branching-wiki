@@ -4,6 +4,7 @@
  */
 
 'use strict';
+/* globals describe, it */
 
 var _ = require('underscore'),
     expect = require('expect.js'),
@@ -30,7 +31,7 @@ describe('SetFileURL sitegen plugin', function() {
 
       util.run(plugin, files);
 
-      _.each(files, function(file, name) {
+      _.each(files, function(file) {
          expect(file.url).to.eql(file.expectedURL);
       });
    });

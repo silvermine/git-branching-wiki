@@ -21,7 +21,7 @@ module.exports = BasePlugin.extend({
          return createVirtualID(file);
       });
 
-      _.each(files, function(file, name) {
+      _.each(files, function(file) {
          file.parents = this.buildParentsList(filesByVirtualID, file);
 
          // if this file is not the root page, and it has no parents or the top-level parent

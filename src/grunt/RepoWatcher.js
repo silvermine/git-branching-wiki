@@ -7,7 +7,6 @@
 
 var _ = require('underscore'),
     Q = require('q'),
-    git = require('nodegit'),
     chokidar = require('chokidar'),
     BaseGitStep = require('./BaseGitStep');
 

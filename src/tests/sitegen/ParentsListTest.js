@@ -4,6 +4,7 @@
  */
 
 'use strict';
+/* globals describe, it */
 
 var _ = require('underscore'),
     path = require('path'),
@@ -11,9 +12,10 @@ var _ = require('underscore'),
     Util = require('./MetalsmithPluginTestingUtility'),
     util = new Util(),
     PluginClass = require('../../sitegen/ParentsList'),
-    plugin = util.createPlugin(PluginClass);
+    plugin = util.createPlugin(PluginClass),
+    addSampleFile, getSampleFiles;
 
-function testFilesAgainstExpectations(file, name) {
+function testFilesAgainstExpectations(file) {
    expect(_.pluck(file.parents, '__name')).to.eql(file.__expectedParents);
 }
 
@@ -39,7 +41,7 @@ describe('ParentsList sitegen plugin', function() {
 
 });
 
-function addSampleFile(files, name, branchShorthand, expectedParents, parentSlug) {
+addSampleFile = function(files, name, branchShorthand, expectedParents, parentSlug) {
    files[name] = {
       __name: name,
       __expectedParents: expectedParents,
@@ -48,9 +50,9 @@ function addSampleFile(files, name, branchShorthand, expectedParents, parentSlug
       slug: path.basename(name).replace(/\.md$/, ''),
       parent: parentSlug,
    };
-}
+};
 
-function getSampleFiles() {
+getSampleFiles = function() {
    var files = {};
 
    // root file in your workspace
@@ -149,4 +151,4 @@ function getSampleFiles() {
    );
 
    return files;
-}
+};

@@ -4,9 +4,9 @@
  */
 
 'use strict';
+/* globals describe, it */
 
-var _ = require('underscore'),
-    expect = require('expect.js'),
+var expect = require('expect.js'),
     Transformer = require('../../../sitegen/lib/MarkdownTransformer'),
     Task = require('../../../../tasks/index'),
     transformer = new Transformer(Task.DEFAULT_OPTS.templating.markdown);

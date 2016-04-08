@@ -4,23 +4,10 @@
  */
 
 'use strict';
-
-var _ = require('underscore'),
-    expect = require('expect.js'),
-    Util = require('./MetalsmithPluginTestingUtility'),
-    util = new Util(),
-    PluginClass = require('../../sitegen/CopyAssets'),
-    plugin = util.createPlugin(PluginClass);
+/* globals describe, it */
 
 describe('CopyAssets sitegen plugin', function() {
    it('basically works', function() {
-      var files = {
-         'workspace/test.jpg': {},
-         'workspace/something.css': {},
-         'workspace/index.md': {},
-         'workspace/SomeDocumentationPage.md': {},
-      };
-
       // TODO: implement this test, which will involve mocking grunt (and maybe metalsmith)
       // util.run(plugin, files);
       // then test that the jpg and css file were copied, and the md files were not

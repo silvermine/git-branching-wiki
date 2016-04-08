@@ -4,6 +4,7 @@
  */
 
 'use strict';
+/* globals describe, it */
 
 var _ = require('underscore'),
     expect = require('expect.js'),
@@ -114,7 +115,7 @@ describe('Base sitegen plugin', function() {
 
          // test with single extension input:
          input = _.extend({}, samples);
-         result = plugin.filterFilesByExtension(input, 'jpg', { inplace: true }),
+         result = plugin.filterFilesByExtension(input, 'jpg', { inplace: true });
          // this expectation tests that the *returned* list is correct
          expectFileList(result, [ 0 ]);
          // this expectation tests that the *input* list was modified and correct
@@ -122,7 +123,7 @@ describe('Base sitegen plugin', function() {
 
          // test with array extension input:
          input = _.extend({}, samples);
-         result = plugin.filterFilesByExtension(input, [ 'html', 'jpg' ], { inplace: true }),
+         result = plugin.filterFilesByExtension(input, [ 'html', 'jpg' ], { inplace: true });
          // this expectation tests that the *returned* list is correct
          expectFileList(result, [ 0, 2 ]);
          // this expectation tests that the *input* list was modified and correct
@@ -130,7 +131,7 @@ describe('Base sitegen plugin', function() {
 
          // test with single extension input, and inverted:
          input = _.extend({}, samples);
-         result = plugin.filterFilesByExtension(input, 'md', { invert: true, inplace: true }),
+         result = plugin.filterFilesByExtension(input, 'md', { invert: true, inplace: true });
          // this expectation tests that the *returned* list is correct
          expectFileList(result, [ 0, 2 ]);
          // this expectation tests that the *input* list was modified and correct
@@ -138,7 +139,7 @@ describe('Base sitegen plugin', function() {
 
          // test with array extension input, and inverted:
          input = _.extend({}, samples);
-         result = plugin.filterFilesByExtension(input, [ 'html', 'jpg' ], { invert: true, inplace: true }),
+         result = plugin.filterFilesByExtension(input, [ 'html', 'jpg' ], { invert: true, inplace: true });
          // this expectation tests that the *returned* list is correct
          expectFileList(result, [ 1, 3 ]);
          // this expectation tests that the *input* list was modified and correct

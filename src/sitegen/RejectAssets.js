@@ -5,9 +5,7 @@
 
 'use strict';
 
-var _ = require('underscore'),
-    path = require('path'),
-    BasePlugin = require('./BasePlugin');
+var BasePlugin = require('./BasePlugin');
 
 module.exports = BasePlugin.extend({
 

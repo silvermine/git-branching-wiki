@@ -13,7 +13,7 @@ module.exports = BasePlugin.extend({
 
    run: function(files, metalsmith, done) {
 
-      _.each(files, function(file, name) {
+      _.each(files, function(file) {
          var filename;
 
          filename = path.basename(file.sourceInfo.paths.full)

@@ -40,7 +40,7 @@ module.exports = Class.extend({
 
       return {
          metalsmith: ms,
-      }
+      };
    },
 
    readFixturePage: function(filename) {

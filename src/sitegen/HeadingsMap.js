@@ -12,7 +12,7 @@ var _ = require('underscore'),
 module.exports = BasePlugin.extend({
 
    run: function(files, metalsmith, done) {
-      _.each(files, function(file, name) {
+      _.each(files, function(file) {
          var contents = file.contents.toString(),
              $ = cheerio.load(contents),
              headings = [],

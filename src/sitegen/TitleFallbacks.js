@@ -12,7 +12,7 @@ var _ = require('underscore'),
 module.exports = BasePlugin.extend({
 
    run: function(files, metalsmith, done) {
-      _.each(files, function(file, name) {
+      _.each(files, function(file) {
          if (file.title) {
             // the title was explicitly set in the frontmatter
             return;

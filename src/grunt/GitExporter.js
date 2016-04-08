@@ -75,7 +75,7 @@ module.exports = BaseGitStep.extend({
 
             return git.Checkout.tree(this.repo, commit, opts);
          }.bind(this))
-         .then(function(commit) {
+         .then(function() {
             this.grunt.log.debug('resetting to head commit "%s"', head.id());
             return git.Reset.reset(this.repo, head, git.Reset.TYPE.MIXED);
          }.bind(this));
