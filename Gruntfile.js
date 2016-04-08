@@ -12,7 +12,6 @@ module.exports = function(grunt) {
       jshint: {
          options: {
             jshintrc: true,
-            ignores: [ 'src/thirdparty/**/*' ],
          },
          all: [ 'Gruntfile.js', 'src/**/*.js', 'tasks/**/*.js' ],
       },

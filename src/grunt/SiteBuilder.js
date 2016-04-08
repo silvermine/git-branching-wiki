@@ -30,7 +30,7 @@ module.exports = BaseStep.extend({
       return Q.ninvoke(builder, 'build')
          .then(function() {
             // TODO: make this configurable (users can override static assets)
-            var srcs = [ path.join(__dirname, '../thirdparty'), path.join(__dirname, '../static') ],
+            var srcs = [ path.join(__dirname, '../../thirdparty'), path.join(__dirname, '../static') ],
                 dest = this.getOutputSiteDirectory();
 
             // do the copying in serial (_.reduce rather than Q.all(_.map)) in case something in our local static folder
