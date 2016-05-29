@@ -13,6 +13,7 @@ module.exports = BasePlugin.extend({
 
    run: function(files, metalsmith, done) {
       var assets = this.filterFilesByExtension(files, 'md', { invert: true });
+
       _.each(assets, function(file, name) {
          var src = path.join(metalsmith.source(), name),
              dest = path.join(metalsmith.destination(), name);

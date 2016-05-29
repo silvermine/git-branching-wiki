@@ -24,7 +24,7 @@ module.exports = BasePlugin.extend({
             path.dirname(file.sourceInfo.paths.full).split(path.sep),
             filename
          ]).join('/');
-      }.bind(this));
+      });
 
       done();
    },

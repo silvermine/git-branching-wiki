@@ -4,7 +4,8 @@
  */
 
 'use strict';
-/* globals describe, it */
+
+/* eslint-disable max-len */
 
 var expect = require('expect.js'),
     Transformer = require('../../../sitegen/lib/MarkdownTransformer'),

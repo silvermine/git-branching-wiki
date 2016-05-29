@@ -37,10 +37,11 @@
   },
   "devDependencies": {
     "coveralls": "2.11.9",
+    "eslint": "2.11.0",
+    "eslint-config-silvermine": "0.9.1",
     "expect.js": "0.3.1",
     "grunt": "1.0.1",
-    "grunt-contrib-jshint": "1.0.0",
-    "grunt-jscs": "2.8.0",
+    "grunt-eslint": "18.1.0",
     "istanbul": "0.4.2",
     "mocha": "2.4.5",
     "mocha-lcov-reporter": "1.2.0",

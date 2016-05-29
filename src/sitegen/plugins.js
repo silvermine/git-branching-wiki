@@ -11,9 +11,11 @@ var _ = require('underscore');
 function timer(grunt, name, fn) {
    return function(files, metalsmith, done) {
       var start = _.now(),
-      numFiles = Object.keys(files).length;
+          numFiles = Object.keys(files).length;
+
       return fn(files, metalsmith, function() {
          var stop = _.now();
+
          grunt.log.ok('Plugin [%s] took %s seconds on %s files', name, ((stop - start) / 1000), numFiles);
          done.apply(undefined, arguments);
       });
@@ -21,10 +23,12 @@ function timer(grunt, name, fn) {
 }
 
 /* istanbul ignore next */
+/* eslint-disable global-require */
 function timedLocalPlugin(grunt, opts, name) {
    var Plugin = require('./' + name),
        plugin = new Plugin(grunt, opts);
 
+   /* eslint-enable global-require */
    return timer(grunt, name, plugin.run.bind(plugin));
 }
 

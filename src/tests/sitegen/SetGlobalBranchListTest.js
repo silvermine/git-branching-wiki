@@ -4,7 +4,6 @@
  */
 
 'use strict';
-/* globals describe, it */
 
 var _ = require('underscore'),
     expect = require('expect.js'),
@@ -55,7 +54,6 @@ describe('SetGlobalBranchList sitegen plugin', function() {
       // now run the plugin that we're testing
       runResults = util.run(plugin, files);
 
-      console.log(runResults.metalsmith.metadata());
       expect(runResults.metalsmith.metadata()).to.eql({ branches: expectations });
    });
 });

@@ -4,7 +4,6 @@
  */
 
 'use strict';
-/* globals describe, it */
 
 var expect = require('expect.js'),
     Util = require('./MetalsmithPluginTestingUtility'),

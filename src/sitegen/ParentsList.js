@@ -41,6 +41,7 @@ module.exports = BasePlugin.extend({
 
    buildParentsList: function(filesByVirtualID, file, list) {
       var parent;
+
       list = (list || []);
 
       if (!file.parent) {

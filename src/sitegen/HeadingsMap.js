@@ -51,7 +51,7 @@ module.exports = BasePlugin.extend({
             stack[heading.weight] = heading;
             return list;
          }, []);
-      }.bind(this));
+      });
 
       done();
    },

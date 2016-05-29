@@ -15,6 +15,7 @@ module.exports = BasePlugin.extend({
 
       branches = _.reduce(files, function(memo, file) {
          var branch = file.sourceInfo.branchShorthand;
+
          if (!memo[branch]) {
             memo[branch] = _.omit(file.sourceInfo, 'paths');
          }
