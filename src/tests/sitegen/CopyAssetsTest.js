@@ -4,7 +4,6 @@
  */
 
 'use strict';
-/* globals describe, it */
 
 describe('CopyAssets sitegen plugin', function() {
    it('basically works', function() {

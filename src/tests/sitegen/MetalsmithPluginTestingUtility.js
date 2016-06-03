@@ -30,12 +30,13 @@ MockMetalsmith = Class.extend({
 
 module.exports = Class.extend({
 
-   createPlugin: function(Class) {
-      return new Class(this.mockGrunt(), this.getOptions());
+   createPlugin: function(PluginClass) {
+      return new PluginClass(this.mockGrunt(), this.getOptions());
    },
 
    run: function(plugin, files) {
       var ms = this.mockMetalsmith();
+
       plugin.run(files, ms, _.noop);
 
       return {

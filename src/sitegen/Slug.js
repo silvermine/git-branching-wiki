@@ -15,7 +15,7 @@ module.exports = BasePlugin.extend({
 
       _.each(files, function(file, name) {
          file.slug = path.basename(name).replace(/\.([\w\d]+)$/, '');
-      }.bind(this));
+      });
 
       done();
    },

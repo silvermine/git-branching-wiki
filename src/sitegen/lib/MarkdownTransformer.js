@@ -27,12 +27,14 @@ module.exports = Class.extend({
       // hash-only format: commit:$hash
       str = str.replace(/\bcommit:([0-9A-Fa-f]+)\b/g, function(match, hash) {
          var href = hashOnly({ hash: hash });
+
          return '[' + hash + '](' + href + ')';
       });
 
       // cross-repo format: $group:$repo:$hash
       str = str.replace(/\b(([0-9a-zA-Z\-_]+):([0-9a-zA-Z\-_]+):([0-9A-Fa-f]+))\b/g, function(match, outer, group, repo, hash) {
          var href = crossRepo({ group: group, repo: repo, hash: hash });
+
          return '[' + outer + '](' + href + ')';
       });
 
@@ -51,12 +53,15 @@ module.exports = Class.extend({
               ')\\b'; // end of linkText capture
 
       regex = new RegExp(regex, 'g');
+
       // source:$filepath - link to a file in the repo
       // source:$filepath@$revision - link to a file in the repo at a specific branch (e.g. master) or revision (e.g. deadbeef)
       // source:$filepath#L120 - link to line 120 of a file
       // source:$filepath#L120-125 - link to lines 120-125 of a file
       // source:$filepath@$revision#L120-125 - link to lines 120-125 of a file at a specific revision
       // source:$group:$repo|$filepath@$revision#L120-125 - link to a file in another repo
+
+      /* eslint-disable max-params */
       return str.replace(regex, function(match, linkText, fullFilepath, revision, startingLine, endingLine) {
          var pathParts = fullFilepath.split(/[:\|]/),
              group = (pathParts.length > 1 ? pathParts.shift() : undefined),
@@ -77,16 +82,19 @@ module.exports = Class.extend({
 
          return '[' + linkText + '](' + href + ')';
       }.bind(this));
+
+      /* eslint-enable max-params */
    },
 
    transformTicketLinks: function(str) {
       var template = _.template(this.opts.ticketLinks);
 
       // ticket links: #12345
-      return str.replace(/(\s)\#([0-9]+)\b/g, function(match, space, number) {
+      return str.replace(/(\s)#([0-9]+)\b/g, function(match, space, number) {
          var href = template({ number: number });
+
          return space + '[#' + number + '](' + href + ')';
-      }.bind(this));
+      });
    },
 
    transformThumbnailMacros: function(str) {

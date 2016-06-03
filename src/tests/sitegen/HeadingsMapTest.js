@@ -4,7 +4,6 @@
  */
 
 'use strict';
-/* globals describe, it */
 
 var _ = require('underscore'),
     Q = require('q'),
@@ -43,16 +42,16 @@ describe('HeadingsMap sitegen plugin', function() {
                { id: 'welcome-to-documentation', text: 'Welcome to Documentation', weight: 1, subheadings: [
                   { id: 'second-level-subheading', text: 'Second-Level Subheading', weight: 2, subheadings: [
                      { id: 'third-level-subheading', text: 'Third-Level Subheading', weight: 3, subheadings: [] },
-                  ]},
-               ]},
+                  ] },
+               ] },
             ]);
 
             expect(files['SomeOtherDocPage.html'].headings).to.eql([
                { id: 'another-page-of-docs', text: 'Another Page of Docs', weight: 1, subheadings: [
                   { id: 'lots-of-markdown-things', text: 'Lots of Markdown Things', weight: 2, subheadings: [
                      { id: 'code-links', text: 'Code links', weight: 3, subheadings: [] },
-                  ]},
-               ]},
+                  ] },
+               ] },
             ]);
 
             // H1 below H2, etc
@@ -60,15 +59,15 @@ describe('HeadingsMap sitegen plugin', function() {
                { id: 'subheading-level-1', text: 'Subheading Level 1', weight: 1, subheadings: [
                   { id: 'subheading-level-2', text: 'Subheading Level 2', weight: 2, subheadings: [
                      { id: 'subheading-level-3', text: 'Subheading Level 3', weight: 3, subheadings: [
-                     ]},
-                  ]},
-                  { id: 'subheading-level-2-2', text: 'Subheading Level 2 2', weight: 2, subheadings: []},
-               ]},
+                     ] },
+                  ] },
+                  { id: 'subheading-level-2-2', text: 'Subheading Level 2 2', weight: 2, subheadings: [] },
+               ] },
                { id: 'subheading-level-1-2', text: 'Subheading Level 1 2', weight: 1, subheadings: [
                   { id: 'subheading-level-2-3', text: 'Subheading Level 2 3', weight: 2, subheadings: [
-                     { id: 'subheading-level-3-2', text: 'Subheading Level 3 2', weight: 3, subheadings: []},
-                  ]},
-               ]},
+                     { id: 'subheading-level-3-2', text: 'Subheading Level 3 2', weight: 3, subheadings: [] },
+                  ] },
+               ] },
             ]);
 
             done();

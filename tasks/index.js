@@ -28,7 +28,7 @@ DEFAULT_OPTS = {
    },
    templating: {
       globals: {
-         site_title: 'Documentation Site'
+         siteTitle: 'Documentation Site'
       },
       markdown: {
          ticketLinks: 'https://github.com/silvermine/git-branching-wiki/issues/<%= number %>',
@@ -46,11 +46,14 @@ DEFAULT_OPTS = {
    },
 };
 
+/* eslint-disable global-require */
 STEPS = {
    'export': require('../src/grunt/GitExporter'),
    'build': require('../src/grunt/SiteBuilder'),
    'watch': require('../src/grunt/RepoWatcher'),
 };
+
+/* eslint-enable global-require */
 
 module.exports = function(grunt) {
 

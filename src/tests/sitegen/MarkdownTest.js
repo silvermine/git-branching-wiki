@@ -4,7 +4,6 @@
  */
 
 'use strict';
-/* globals describe, it */
 
 var _ = require('underscore'),
     Q = require('q'),
@@ -33,9 +32,10 @@ describe('Markdown sitegen plugin', function() {
                      });
                }));
             })
-            .then(function() { done(); })
+            .then(function() {
+               done();
+            })
             .catch(done);
       });
-
    });
 });

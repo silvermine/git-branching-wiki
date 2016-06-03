@@ -4,7 +4,6 @@
  */
 
 'use strict';
-/* globals describe, it */
 
 var _ = require('underscore'),
     expect = require('expect.js'),

@@ -4,7 +4,6 @@
  */
 
 'use strict';
-/* globals describe, it */
 
 var _ = require('underscore'),
     path = require('path'),
@@ -114,7 +113,11 @@ getSampleFiles = function() {
       files,
       'local-branches/master/dev-team/a/b/StandardsJS.md',
       'master',
-      [ 'local-branches/master/index.md', 'local-branches/master/Developers.md', 'local-branches/master/dev-team/DevelopersCodingStandards.md' ],
+      [
+         'local-branches/master/index.md',
+         'local-branches/master/Developers.md',
+         'local-branches/master/dev-team/DevelopersCodingStandards.md'
+      ],
       'DevelopersCodingStandards'
    );
 
@@ -146,7 +149,11 @@ getSampleFiles = function() {
       files,
       'remotes/origin/master/dev-team/a/b/StandardsJS.md',
       'origin/master',
-      [ 'remotes/origin/master/index.md', 'remotes/origin/master/Developers.md', 'remotes/origin/master/dev-team/DevelopersCodingStandards.md' ],
+      [
+         'remotes/origin/master/index.md',
+         'remotes/origin/master/Developers.md',
+         'remotes/origin/master/dev-team/DevelopersCodingStandards.md'
+      ],
       'DevelopersCodingStandards'
    );
 

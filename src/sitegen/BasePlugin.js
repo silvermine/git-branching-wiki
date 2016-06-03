@@ -38,14 +38,18 @@ module.exports = Class.extend({
     * @return a metalsmith files object, filtered according to input
     */
    filterFilesByExtension: function(files, extensions, options) {
+      var inverted;
+
       // allow for a single extension or an array of extensions:
       extensions = _.isArray(extensions) ? extensions : [ extensions ];
       // allow for undefined options:
       options = options || {};
 
+      inverted = !!options.invert;
+
       return _.reduce(files, function(memo, file, name) {
          var isInList = _.contains(extensions, path.extname(name).substr(1)),
-             include = (isInList ^ !!options.invert);
+             include = (inverted ? !isInList : isInList);
 
          if (include) {
             memo[name] = file;

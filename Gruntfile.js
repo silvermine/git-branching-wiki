@@ -19,23 +19,15 @@ module.exports = function(grunt) {
 
       pkg: grunt.file.readJSON('package.json'),
 
-      jshint: {
-         options: {
-            jshintrc: true,
-         },
-         all: config.js.all,
+      eslint: {
+         target: config.js.all,
       },
 
-      jscs: {
-         src: config.js.all,
-      },
    });
 
-   grunt.loadNpmTasks('grunt-contrib-jshint');
-   grunt.loadNpmTasks('grunt-jscs');
+   grunt.loadNpmTasks('grunt-eslint');
 
-   grunt.registerTask('standards', [ 'jshint', 'jscs' ]);
+   grunt.registerTask('standards', [ 'eslint' ]);
    grunt.registerTask('default', [ 'standards' ]);
 
 };
-
