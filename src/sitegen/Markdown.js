@@ -6,9 +6,21 @@
 'use strict';
 
 var _ = require('underscore'),
-    marked = require('marked'),
+    Remarkable = require('remarkable'),
+    identify = require('identify'),
     BasePlugin = require('./BasePlugin'),
-    MarkdownTransformer = require('./lib/MarkdownTransformer');
+    MarkdownTransformer = require('./lib/MarkdownTransformer'),
+    remarkable;
+
+remarkable = new Remarkable({
+   // Consider whether we should actually allow HTML in the source.
+   // Likely not, but we need it right now because of the pre-transform.
+   // We could probably do away with the pre-transform if we implement
+   // custom Remarkable extension rules.
+   html: true,
+   typographer: true,
+   quotes: '“”‘’',
+});
 
 module.exports = BasePlugin.extend({
 
@@ -21,14 +33,8 @@ module.exports = BasePlugin.extend({
          var str = file.contents.toString();
 
          str = this.transformer.transformRawMarkdown(str);
-         str = marked(str, {
-            smartypants: true,
-            gfm: true,
-            breaks: true,
-            tables: true,
-            // TODO: add custom renderer
-            // TODO: add code highlighting
-         });
+         str = remarkable.render(str);
+         str = identify(str);
 
          file.contents = new Buffer(str);
          delete files[name];
