@@ -1,12 +1,8 @@
 language: node_js
 node_js:
-  - "stable"
   - "5"
-  - "5.1"
   - "4"
-  - "4.2"
-  - "4.1"
-  - "4.0"
+  - "4.4.4"
 
 # Not compatible with older versions because some dependencies
 # use yield/unyield, etc
