@@ -14,16 +14,14 @@ module.exports = BasePlugin.extend({
    run: function(files, metalsmith, done) {
 
       _.each(files, function(file) {
-         var filename;
+         var dirname = path.dirname(file.sourceInfo.paths.full).split(path.sep),
+             filename;
 
          filename = path.basename(file.sourceInfo.paths.full)
             .replace(/[^\w\d\-\.]/g, '')
             .replace(/\.md$/, '.html');
 
-         file.url = _.flatten([
-            path.dirname(file.sourceInfo.paths.full).split(path.sep),
-            filename
-         ]).join('/');
+         file.url = _.flatten([ dirname, filename ]).join('/');
       });
 
       done();

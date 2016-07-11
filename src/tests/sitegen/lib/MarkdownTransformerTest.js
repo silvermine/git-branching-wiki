@@ -40,27 +40,33 @@ describe('Markdown transformation', function() {
       it('transforms code links', function() {
          // source:$filepath - link to a file in the repo
          expect(transformer.transformCodeLinks('test source:some/file.txt test'))
-            .to.eql('test [some/file.txt](https://github.com/silvermine/git-branching-wiki/blob/master/some/file.txt) test');
+            .to
+            .eql('test [some/file.txt](https://github.com/silvermine/git-branching-wiki/blob/master/some/file.txt) test');
 
          // source:$filepath@$revision - link to a file in the repo at a specific branch (e.g. master) or revision (e.g. deadbeef)
          expect(transformer.transformCodeLinks('test source:some/file.txt@deadbeef test'))
-            .to.eql('test [some/file.txt@deadbeef](https://github.com/silvermine/git-branching-wiki/blob/deadbeef/some/file.txt) test');
+            .to
+            .eql('test [some/file.txt@deadbeef](https://github.com/silvermine/git-branching-wiki/blob/deadbeef/some/file.txt) test');
 
          // source:$filepath#L120 - link to line 120 of a file
          expect(transformer.transformCodeLinks('test source:some/file.txt#L120 test'))
-            .to.eql('test [some/file.txt#L120](https://github.com/silvermine/git-branching-wiki/blob/master/some/file.txt#L120) test');
+            .to
+            .eql('test [some/file.txt#L120](https://github.com/silvermine/git-branching-wiki/blob/master/some/file.txt#L120) test');
 
          // source:$filepath#L120-125 - link to lines 120-125 of a file
          expect(transformer.transformCodeLinks('test source:some/file.txt#L120-125 test'))
-            .to.eql('test [some/file.txt#L120-125](https://github.com/silvermine/git-branching-wiki/blob/master/some/file.txt#L120-L125) test');
+            .to
+            .eql('test [some/file.txt#L120-125](https://github.com/silvermine/git-branching-wiki/blob/master/some/file.txt#L120-L125) test');
 
          // source:$filepath@$revision#L120-125 - link to lines 120-125 of a file at a specific revision
          expect(transformer.transformCodeLinks('test source:some/file.txt@deadbeef#L120-125 test'))
-            .to.eql('test [some/file.txt@deadbeef#L120-125](https://github.com/silvermine/git-branching-wiki/blob/deadbeef/some/file.txt#L120-L125) test');
+            .to
+            .eql('test [some/file.txt@deadbeef#L120-125](https://github.com/silvermine/git-branching-wiki/blob/deadbeef/some/file.txt#L120-L125) test');
 
          // source:$group:$repo|$filepath@$revision#L120-125 - link to a file in another repo
          expect(transformer.transformCodeLinks('test source:anotherorg:anotherproject|some/file.txt@deadbeef#L120-125 test'))
-            .to.eql('test [anotherorg:anotherproject|some/file.txt@deadbeef#L120-125](https://github.com/anotherorg/anotherproject/blob/deadbeef/some/file.txt#L120-L125) test');
+            .to
+            .eql('test [anotherorg:anotherproject|some/file.txt@deadbeef#L120-125](https://github.com/anotherorg/anotherproject/blob/deadbeef/some/file.txt#L120-L125) test');
 
       });
 
